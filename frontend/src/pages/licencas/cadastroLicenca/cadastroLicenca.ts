@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertController, IonicPage, NavController, NavParams } from "ionic-angular";
 import { LicenceDTO } from "../../../licence/models/licence.dto";
 import { LicenceService } from "../../../licence/services/licence.service";
