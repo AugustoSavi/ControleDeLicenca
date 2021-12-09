@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer-visualizacao {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    padding-right: 16px;
+
+    .button-generico {
+        padding: 0 10rem;
+    }
+}

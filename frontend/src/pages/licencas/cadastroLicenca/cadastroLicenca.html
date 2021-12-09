@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro Licença</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-item>
+      <ion-label floating>Id</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.id" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.nome" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Chave de Acesso</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.chaveDeAcesso" readonly></ion-input>
+    </ion-item>
+
+
+    <ion-item margin-top>
+      <ion-label>Situação do Cadastro: </ion-label>
+      <ion-select value="true" [(ngModel)]="selectedItem.ativo">
+        <ion-option value="true">ATIVO</ion-option>
+        <ion-option value="false">DESATIVADO</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+</ion-content>
+
+<ion-footer class="footer-visualizacao">
+    <button ion-button class="button-generico" color="danger" [disabled]="buttonDisabled" (click)="showConfirm($event, selectedItem.id)">Deletar</button>
+    <button ion-button class="button-generico" (click)="save($event)">Salvar</button>
+</ion-footer>
