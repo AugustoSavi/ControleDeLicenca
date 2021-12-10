@@ -11,7 +11,8 @@ import { LicencasPage } from "../licencas";
 })
 export class CadastroLicenca {
     selectedItem: LicenceDTO;
-    buttonDisabled: boolean;
+    buttonDeleteDisabled: boolean;
+    buttonSaveDisabled: boolean;
 
     constructor(
         public navParams: NavParams,
@@ -24,42 +25,43 @@ export class CadastroLicenca {
     }
 
     ionViewDidLoad(){
-        this.buttonDisabled = this.selectedItem.id ? false : true;
+      this.buttonDeleteDisabled = this.selectedItem.id ? false : true;
+      this.validateForm()
     }
 
     save($event){
-        this.licenceService.save(this.selectedItem).subscribe(
-            () => {this.navCtrl.setRoot(LicencasPage);}
-        );
+      this.licenceService.save(this.selectedItem).subscribe(
+        () => {this.navCtrl.setRoot(LicencasPage);}
+      );
     }
 
     delete($event, id){
-        this.licenceService.delete(id).subscribe(
-            () => {this.navCtrl.setRoot(LicencasPage);}
-        );
+      this.licenceService.delete(id).subscribe(
+          () => {this.navCtrl.setRoot(LicencasPage);}
+      );
     }
 
     showConfirm($event, id) {
-        const confirm = this.alertCtrl.create({
-          title: 'Excluir Licença?',
-          message: 'Você tem certeza que quer excluir essa licença?',
-          buttons: [
-            {
-              text: 'Não Excluir',
-              handler: () => {}
-            },
-            {
-              text: 'Excluir',
-              handler: () => {
-                this.delete($event, id);
-              }
+      const confirm = this.alertCtrl.create({
+        title: 'Excluir Licença?',
+        message: 'Você tem certeza que quer excluir essa licença?',
+        buttons: [
+          {
+            text: 'Não Excluir',
+            handler: () => {}
+          },
+          {
+            text: 'Excluir',
+            handler: () => {
+              this.delete($event, id);
             }
-          ]
-        });
-        confirm.present();
+          }
+        ]
+      });
+      confirm.present();
     }
 
     validateForm(){
-
+      this.buttonSaveDisabled = (this.selectedItem.nome && this.selectedItem.email) ? false : true ;
     }
 }

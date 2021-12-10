@@ -16,12 +16,12 @@
 
     <ion-item>
       <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="selectedItem.nome" required></ion-input>
+      <ion-input type="text" [(ngModel)]="selectedItem.nome" required (ionChange)="validateForm()"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="text" [(ngModel)]="selectedItem.email" required></ion-input>
+      <ion-input type="text" [(ngModel)]="selectedItem.email" required (ionChange)="validateForm()"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -42,6 +42,6 @@
 </ion-content>
 
 <ion-footer class="footer-visualizacao">
-    <button ion-button class="button-generico" color="danger" [disabled]="buttonDisabled" (click)="showConfirm($event, selectedItem.id)">Deletar</button>
-    <button ion-button class="button-generico" (click)="save($event)">Salvar</button>
+    <button ion-button class="button-generico" color="danger" [disabled]="buttonDeleteDisabled" (click)="showConfirm($event, selectedItem.id)">Deletar</button>
+    <button ion-button class="button-generico" [disabled]="buttonSaveDisabled" (click)="save($event)" >Salvar</button>
 </ion-footer>
